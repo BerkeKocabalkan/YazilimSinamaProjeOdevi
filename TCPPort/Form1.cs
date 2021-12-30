@@ -32,7 +32,8 @@ namespace TCPPort
             //Update mesage to txtStatus
             listBox1.Invoke((MethodInvoker)delegate ()
             {
-                listBox1.Items.Add(e.MessageString);
+                var deger= e.MessageString.Substring(0, e.MessageString.Length - 1);
+                listBox1.Items.Add(deger);
                 e.ReplyLine(string.Format("Sen: {0}", e.MessageString));
             });
         }
