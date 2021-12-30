@@ -39,14 +39,30 @@ namespace Client
             //Update message to txtStatus
             listBox1.Invoke((MethodInvoker)delegate ()
             {
-                var deger = e.MessageString.Substring(0, e.MessageString.Length - 1);
-                listBox1.Items.Add(deger);
+                spn_sifreleme spn = new spn_sifreleme("12345678");
+                string deger = e.MessageString.Substring(5, e.MessageString.Length - 5).Substring(0, e.MessageString.Length - 6);
+                string kisi = e.MessageString.Substring(0, 5);
+
+                listBox1.Items.Add(kisi+spn.decrypt(deger));
             });
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            client.WriteLineAndGetReply(girdiText.Text, TimeSpan.FromSeconds(3));
+            if (girdiText.Text == "")
+            {
+                MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (girdiText.Text.Length % 2 == 1)
+                {
+                    girdiText.Text += " ";
+                }
+                spn_sifreleme spn = new spn_sifreleme(girdiText.Text);
+                
+                client.WriteLineAndGetReply(spn.encrypt(), TimeSpan.FromSeconds(3));
+            }
         }
 
         private void checkSPN_CheckedChanged(object sender, EventArgs e)
@@ -70,7 +86,7 @@ namespace Client
             girdiText.Text = turkceKarakterFonk(girdiText.Text);
             if (girdiText.Text == "")
             {
-                MessageBox.Show("Girdi Boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -114,7 +130,7 @@ namespace Client
         {
             if (girdiText.Text == "")
             {
-                MessageBox.Show("Cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -123,12 +139,16 @@ namespace Client
                     spn_sifreleme spn = new spn_sifreleme("12345678");
                     ciktiText.Text = spn.decrypt(girdiText.Text);
                 }
-                else if (checkSHA.Checked == true) { MessageBox.Show("SHA şifreleme Çözülemez. "); }
+                else if (checkSHA.Checked == true) 
+                { 
+                    MessageBox.Show("SHA şifreleme Çözülemez. "); 
+                }
                 else if (checkSPN.Checked == false && checkSHA.Checked == false)
                 {
                     MessageBox.Show("Şifreleme metodu seçiniz ", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
+
     }
 }

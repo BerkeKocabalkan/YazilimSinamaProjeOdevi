@@ -183,6 +183,7 @@ namespace Client
             this.cozBTN.TabIndex = 22;
             this.cozBTN.Text = "Çöz";
             this.cozBTN.UseVisualStyleBackColor = true;
+            this.cozBTN.Click += new System.EventHandler(this.cozBTN_Click);
             // 
             // label5
             // 
