@@ -118,7 +118,6 @@ namespace Client
             this.girdiText.Name = "girdiText";
             this.girdiText.Size = new System.Drawing.Size(181, 43);
             this.girdiText.TabIndex = 32;
-            this.girdiText.Text = "127.0.0.1";
             // 
             // metroLabel4
             // 
