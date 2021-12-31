@@ -32,7 +32,7 @@ namespace TCPPort
             //Update mesage to txtStatus
             listBox1.Invoke((MethodInvoker)delegate ()
             {
-                var deger= e.MessageString.Substring(0, e.MessageString.Length - 1);
+                var deger = e.MessageString.Substring(0, e.MessageString.Length - 1);
                 listBox1.Items.Add(deger);
                 e.ReplyLine(string.Format("Sen: {0}", e.MessageString));
             });
@@ -42,11 +42,19 @@ namespace TCPPort
         {
             //Start server host
             btnStart.Enabled = false;
-            listBox1.Items.Add("Server starting...");
 
-            System.Net.IPAddress ip = System.Net.IPAddress.Parse(txtHost.Text);
-            server.Start(ip, Convert.ToInt32(txtPort.Text));
+            try
+            {
+                System.Net.IPAddress ip = System.Net.IPAddress.Parse(txtHost.Text);
+                server.Start(ip, Convert.ToInt32(txtPort.Text));
+                listBox1.Items.Add("Server starting...");
+            }
+            catch (Exception)
+            {
+                listBox1.Items.Add("Server Başlatılırken hata oluştu");
+                throw;
+            }
+            
         }
-
     }
 }
