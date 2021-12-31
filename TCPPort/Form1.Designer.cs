@@ -34,7 +34,6 @@ namespace TCPPort
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -49,15 +48,17 @@ namespace TCPPort
             // 
             // txtHost
             // 
+            this.txtHost.Enabled = false;
             this.txtHost.Location = new System.Drawing.Point(16, 30);
             this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(125, 20);
+            this.txtHost.Size = new System.Drawing.Size(163, 20);
             this.txtHost.TabIndex = 1;
             this.txtHost.Text = "127.0.0.1";
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(154, 30);
+            this.txtPort.Enabled = false;
+            this.txtPort.Location = new System.Drawing.Point(208, 30);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(48, 20);
             this.txtPort.TabIndex = 3;
@@ -66,7 +67,7 @@ namespace TCPPort
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(151, 13);
+            this.label2.Location = new System.Drawing.Point(205, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 2;
@@ -74,23 +75,13 @@ namespace TCPPort
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(208, 27);
+            this.btnStart.Location = new System.Drawing.Point(290, 27);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 4;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(289, 27);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 5;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // listBox1
             // 
@@ -106,7 +97,6 @@ namespace TCPPort
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 303);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.txtPort);
             this.Controls.Add(this.label2);
@@ -128,7 +118,6 @@ namespace TCPPort
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.ListBox listBox1;
     }
 }

@@ -51,6 +51,7 @@ namespace Client
             // 
             // btnSend
             // 
+            this.btnSend.Enabled = false;
             this.btnSend.Location = new System.Drawing.Point(15, 341);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(181, 23);
@@ -71,6 +72,7 @@ namespace Client
             // 
             // txtPort
             // 
+            this.txtPort.Enabled = false;
             this.txtPort.Location = new System.Drawing.Point(12, 64);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(77, 20);
@@ -88,6 +90,7 @@ namespace Client
             // 
             // txtHost
             // 
+            this.txtHost.Enabled = false;
             this.txtHost.Location = new System.Drawing.Point(12, 25);
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(181, 20);
@@ -208,6 +211,7 @@ namespace Client
             // keyText
             // 
             this.keyText.Location = new System.Drawing.Point(13, 176);
+            this.keyText.MaxLength = 8;
             this.keyText.Name = "keyText";
             this.keyText.Size = new System.Drawing.Size(180, 20);
             this.keyText.TabIndex = 25;

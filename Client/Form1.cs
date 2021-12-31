@@ -22,9 +22,21 @@ namespace Client
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            btnConnect.Enabled = false;
-            //Connect to server
-            client.Connect(txtHost.Text, Convert.ToInt32(txtPort.Text));
+            try
+            {
+                //Connect to server
+                client.Connect(txtHost.Text, Convert.ToInt32(txtPort.Text));
+                btnConnect.Enabled = false;
+                btnSend.Enabled = true;
+                MessageBox.Show("Bağlantı başarılı", "", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Server şuan kapalı sonra tekrar deneyiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnConnect.Enabled = true;
+                btnSend.Enabled = false;
+            }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

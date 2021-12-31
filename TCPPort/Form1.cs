@@ -47,15 +47,15 @@ namespace TCPPort
             server.Start(ip, Convert.ToInt32(txtPort.Text));
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            if (server.IsStarted)
-            {
-                server.Stop();
-                btnStart.Enabled = true;
-            }
+        //private void btnStop_Click(object sender, EventArgs e)
+        //{
+        //    if (server.IsStarted)
+        //    {
+        //        server.Stop();
+        //        btnStart.Enabled = true;
+        //    }
                 
-        }
+        //}
 
     }
 }
