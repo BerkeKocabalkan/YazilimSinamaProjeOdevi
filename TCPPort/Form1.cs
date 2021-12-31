@@ -43,19 +43,10 @@ namespace TCPPort
             //Start server host
             btnStart.Enabled = false;
             listBox1.Items.Add("Server starting...");
+
             System.Net.IPAddress ip = System.Net.IPAddress.Parse(txtHost.Text);
             server.Start(ip, Convert.ToInt32(txtPort.Text));
         }
-
-        //private void btnStop_Click(object sender, EventArgs e)
-        //{
-        //    if (server.IsStarted)
-        //    {
-        //        server.Stop();
-        //        btnStart.Enabled = true;
-        //    }
-                
-        //}
 
     }
 }

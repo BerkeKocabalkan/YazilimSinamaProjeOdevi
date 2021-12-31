@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    class spn_sifreleme
+    public class spn_sifreleme
     {
         private string girdiText, bin_girdiText, key, bin_Key, s_Boxes = "", ciktiText;
 

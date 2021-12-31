@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Client
 {
-    class sha_sifreleme
+    [Serializable]
+    public class sha_sifreleme
     {
         private string girdiText;
 

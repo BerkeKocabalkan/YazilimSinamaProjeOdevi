@@ -36,7 +36,7 @@ namespace Client
                 btnConnect.Enabled = true;
                 btnSend.Enabled = false;
             }
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace Client
                 string deger = e.MessageString.Substring(5, e.MessageString.Length - 5).Substring(0, e.MessageString.Length - 6);
                 string kisi = e.MessageString.Substring(0, 5);
 
-                listBox1.Items.Add(kisi+spn.decrypt(deger));
+                listBox1.Items.Add(kisi + spn.decrypt(deger));
             });
         }
 
@@ -65,6 +65,8 @@ namespace Client
             {
                 MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (keyText.Text == "") { MessageBox.Show("Lütfen bir anahtar giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            else if (keyText.Text.Length != 8) { MessageBox.Show("Anahtar 8 karakter olmalıdır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             else
             {
                 if (girdiText.Text.Length % 2 == 1)
@@ -72,9 +74,10 @@ namespace Client
                     girdiText.Text += " ";
                 }
                 spn_sifreleme spn = new spn_sifreleme(girdiText.Text, keyText.Text);
-                
+
                 client.WriteLineAndGetReply(spn.encrypt(), TimeSpan.FromSeconds(3));
             }
+
         }
 
         private void checkSPN_CheckedChanged(object sender, EventArgs e)
@@ -143,24 +146,36 @@ namespace Client
         }
         private void cozBTN_Click(object sender, EventArgs e)
         {
-            if (girdiText.Text == "")
+            VeriAl(girdiText.Text, keyText.Text, checkSPN.Checked, checkSHA.Checked);
+
+        }
+        public void VeriAl(string girdiTxt, string ketTxt, bool chechSpn, bool chechSHA)
+        {
+            if (girdiTxt == "")
             {
                 MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (keyText.Text == "") { MessageBox.Show("Lütfen bir anahtar giriniz.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
-            else if (keyText.Text.Length != 8) { MessageBox.Show("Anahtar 8 karakter olmalıdır.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            else if (ketTxt == "") { MessageBox.Show("Lütfen bir anahtar giriniz.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            else if (ketTxt.Length != 8) { MessageBox.Show("Anahtar 8 karakter olmalıdır.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             else
             {
-                if (checkSPN.Checked == true)
+                if (chechSpn == true)
                 {
-                    spn_sifreleme spn = new spn_sifreleme(keyText.Text);
-                    ciktiText.Text = spn.decrypt(girdiText.Text);
+                    if (girdiTxt.Length % 16 == 0)
+                    {
+                        spn_sifreleme spn = new spn_sifreleme(ketTxt);
+                        ciktiText.Text = spn.decrypt(girdiTxt);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Şifre Çözülemeyecek Durumda");
+                    }
                 }
-                else if (checkSHA.Checked == true) 
-                { 
-                    MessageBox.Show("SHA şifreleme Çözülemez. "); 
+                else if (chechSHA == true)
+                {
+                    MessageBox.Show("SHA şifreleme Çözülemez. ");
                 }
-                else if (checkSPN.Checked == false && checkSHA.Checked == false)
+                else if (chechSpn == false && chechSHA == false)
                 {
                     MessageBox.Show("Şifreleme metodu seçiniz ", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
