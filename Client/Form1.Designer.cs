@@ -45,11 +45,13 @@ namespace Client
             this.sifreleBTN = new System.Windows.Forms.Button();
             this.cozBTN = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.keyText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(12, 302);
+            this.btnSend.Location = new System.Drawing.Point(15, 341);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(181, 23);
             this.btnSend.TabIndex = 12;
@@ -114,7 +116,7 @@ namespace Client
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(199, 9);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(196, 316);
+            this.listBox1.Size = new System.Drawing.Size(196, 355);
             this.listBox1.TabIndex = 15;
             // 
             // label3
@@ -129,7 +131,7 @@ namespace Client
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 237);
+            this.label4.Location = new System.Drawing.Point(15, 276);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 13);
             this.label4.TabIndex = 18;
@@ -137,7 +139,7 @@ namespace Client
             // 
             // ciktiText
             // 
-            this.ciktiText.Location = new System.Drawing.Point(12, 253);
+            this.ciktiText.Location = new System.Drawing.Point(15, 292);
             this.ciktiText.Multiline = true;
             this.ciktiText.Name = "ciktiText";
             this.ciktiText.Size = new System.Drawing.Size(181, 43);
@@ -146,7 +148,7 @@ namespace Client
             // checkSPN
             // 
             this.checkSPN.AutoSize = true;
-            this.checkSPN.Location = new System.Drawing.Point(12, 181);
+            this.checkSPN.Location = new System.Drawing.Point(12, 221);
             this.checkSPN.Name = "checkSPN";
             this.checkSPN.Size = new System.Drawing.Size(63, 17);
             this.checkSPN.TabIndex = 19;
@@ -157,7 +159,7 @@ namespace Client
             // checkSHA
             // 
             this.checkSHA.AutoSize = true;
-            this.checkSHA.Location = new System.Drawing.Point(12, 204);
+            this.checkSHA.Location = new System.Drawing.Point(12, 244);
             this.checkSHA.Name = "checkSHA";
             this.checkSHA.Size = new System.Drawing.Size(69, 17);
             this.checkSHA.TabIndex = 20;
@@ -167,7 +169,7 @@ namespace Client
             // 
             // sifreleBTN
             // 
-            this.sifreleBTN.Location = new System.Drawing.Point(118, 173);
+            this.sifreleBTN.Location = new System.Drawing.Point(118, 213);
             this.sifreleBTN.Name = "sifreleBTN";
             this.sifreleBTN.Size = new System.Drawing.Size(75, 23);
             this.sifreleBTN.TabIndex = 21;
@@ -177,7 +179,7 @@ namespace Client
             // 
             // cozBTN
             // 
-            this.cozBTN.Location = new System.Drawing.Point(118, 198);
+            this.cozBTN.Location = new System.Drawing.Point(118, 238);
             this.cozBTN.Name = "cozBTN";
             this.cozBTN.Size = new System.Drawing.Size(75, 23);
             this.cozBTN.TabIndex = 22;
@@ -188,17 +190,35 @@ namespace Client
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 165);
+            this.label5.Location = new System.Drawing.Point(12, 205);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 23;
             this.label5.Text = "Şifrelemeler";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 159);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Anahtar";
+            // 
+            // keyText
+            // 
+            this.keyText.Location = new System.Drawing.Point(13, 176);
+            this.keyText.Name = "keyText";
+            this.keyText.Size = new System.Drawing.Size(180, 20);
+            this.keyText.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 334);
+            this.ClientSize = new System.Drawing.Size(404, 372);
+            this.Controls.Add(this.keyText);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cozBTN);
             this.Controls.Add(this.sifreleBTN);
@@ -241,6 +261,8 @@ namespace Client
         private System.Windows.Forms.Button sifreleBTN;
         private System.Windows.Forms.Button cozBTN;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox keyText;
     }
 }
 

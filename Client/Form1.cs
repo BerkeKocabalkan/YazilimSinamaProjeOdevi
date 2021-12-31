@@ -39,7 +39,7 @@ namespace Client
             //Update message to txtStatus
             listBox1.Invoke((MethodInvoker)delegate ()
             {
-                spn_sifreleme spn = new spn_sifreleme("12345678");
+                spn_sifreleme spn = new spn_sifreleme(keyText.Text);
                 string deger = e.MessageString.Substring(5, e.MessageString.Length - 5).Substring(0, e.MessageString.Length - 6);
                 string kisi = e.MessageString.Substring(0, 5);
 
@@ -59,7 +59,7 @@ namespace Client
                 {
                     girdiText.Text += " ";
                 }
-                spn_sifreleme spn = new spn_sifreleme(girdiText.Text);
+                spn_sifreleme spn = new spn_sifreleme(girdiText.Text, keyText.Text);
                 
                 client.WriteLineAndGetReply(spn.encrypt(), TimeSpan.FromSeconds(3));
             }
@@ -88,15 +88,18 @@ namespace Client
             {
                 MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (keyText.Text == "") { MessageBox.Show("Lütfen bir anahtar giriniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            else if (keyText.Text.Length != 8) { MessageBox.Show("Anahtar 8 karakter olmalıdır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             else
             {
+
                 if (checkSPN.Checked == true)
                 {
                     if (girdiText.Text.Length % 2 == 1)
                     {
                         girdiText.Text += " ";
                     } // çift karakter olması için sona bir boşluk ekliyor
-                    spn_sifreleme spn = new spn_sifreleme(girdiText.Text);
+                    spn_sifreleme spn = new spn_sifreleme(girdiText.Text, keyText.Text);
                     ciktiText.Text = spn.encrypt();
                 }
                 else if (checkSHA.Checked == true)
@@ -132,11 +135,13 @@ namespace Client
             {
                 MessageBox.Show("Veri boş olamaz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (keyText.Text == "") { MessageBox.Show("Lütfen bir anahtar giriniz.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
+            else if (keyText.Text.Length != 8) { MessageBox.Show("Anahtar 8 karakter olmalıdır.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             else
             {
                 if (checkSPN.Checked == true)
                 {
-                    spn_sifreleme spn = new spn_sifreleme("12345678");
+                    spn_sifreleme spn = new spn_sifreleme(keyText.Text);
                     ciktiText.Text = spn.decrypt(girdiText.Text);
                 }
                 else if (checkSHA.Checked == true) 

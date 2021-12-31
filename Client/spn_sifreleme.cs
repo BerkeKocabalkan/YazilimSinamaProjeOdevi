@@ -11,16 +11,20 @@ namespace Client
         private string girdiText, bin_girdiText, key, bin_Key, s_Boxes = "", ciktiText;
 
 
-
-        public spn_sifreleme(string girdiText)
+        public spn_sifreleme(string key)
         {
-            this.key = "12345678";
+            this.key = key;
+            this.bin_Key = this.stringToBinary(this.key);
+        }
+        public spn_sifreleme(string girdiText , string key)
+        {
+            this.key = key;
             this.bin_Key = this.stringToBinary(this.key);
             this.girdiText = girdiText;
             this.bin_girdiText = this.stringToBinary(this.girdiText);
         }
 
-
+        
 
         //Convert string to binary
         private string stringToBinary(string data)
@@ -82,7 +86,6 @@ namespace Client
             p_Data += data[11]; p_Data += data[1]; p_Data += data[15]; p_Data += data[6];
             p_Data += data[3]; p_Data += data[10]; p_Data += data[7]; p_Data += data[13];
 
-
             return p_Data;
         }
 
@@ -93,9 +96,6 @@ namespace Client
             rp_Data += data[7]; rp_Data += data[3]; rp_Data += data[11]; rp_Data += data[14];
             rp_Data += data[1]; rp_Data += data[4]; rp_Data += data[13]; rp_Data += data[8];
             rp_Data += data[2]; rp_Data += data[15]; rp_Data += data[6]; rp_Data += data[10];
-
-
-
 
             return rp_Data;
 
